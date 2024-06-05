@@ -1,0 +1,485 @@
+/* | IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+/* | CSS RESET  */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* | UTILITY CLSSES */
+li {
+	list-style-type: none;
+}
+
+.btn {
+	width: inherit;
+	height: 54px;
+	border: none;
+	background-color: var(--very-dark-violet);
+	color: var(--light-grayish-violet);
+	font: var(--input-font);
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cp {
+	cursor: pointer;
+}
+
+.mobile {
+	display: none;
+}
+
+/* | VARIABLES */
+:root {
+	/* | COLORS  */
+	--linear-gradient-active-input-border: hsl(249, 99%, 64%) to
+		hsl(278, 94%, 30%);
+	--red-input-errors: hsl(0, 100%, 66%);
+	--white: hsl(0, 0%, 100%);
+	--light-grayish-violet: hsl(270, 3%, 87%);
+	--dark-grayish-violet: hsl(279, 6%, 55%);
+	--very-dark-violet: hsl(278, 68%, 11%);
+
+	/* | FONTS  */
+	--h1-font: 500 30px 'Space Grotesk';
+	--h2-font: 500 28px 'Space Grotesk';
+	--card-p-font: 500 16px 'Space Grotesk';
+	--label-font: 500 14px 'Space Grotesk';
+	--input-font: 500 18px 'Space Grotesk';
+	--error-font: 500 12px 'Space Grotesk';
+}
+
+/* | GENERAL STYLES */
+html {
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	padding-inline: 100px;
+	font: var(--card-p-font);
+	background-color: var(--white);
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 50px;
+	position: relative;
+}
+
+.bgi,
+.bgi li {
+	width: 483px;
+	height: 100%;
+	z-index: -5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.bgi img {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: -5;
+}
+
+.card {
+	margin-left: -60px;
+	color: var(--light-grayish-violet);
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-end;
+	gap: 37px;
+}
+
+.card li {
+	width: 447px;
+	height: 245px;
+}
+
+.front {
+	margin-right: 94px;
+	padding: 28px 32px;
+	background-image: url(img/bg-card-front.png);
+	background-size: auto;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+
+.circles {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 14px;
+}
+
+.circles p {
+	border-radius: 50%;
+}
+
+.circles p:first-child {
+	width: 48px;
+	height: 48px;
+	background-color: var(--light-grayish-violet);
+}
+
+.circles p:last-child {
+	width: 22px;
+	height: 22px;
+	border: 1px solid var(--light-grayish-violet);
+}
+
+.front-text {
+	display: flex;
+	flex-flow: column;
+	gap: 32px;
+}
+
+h2 {
+	font: var(--h2-font);
+	white-space: nowrap;
+}
+
+.name-part {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.back {
+	padding: 114px 60px;
+	background-image: url(img/bg-card-back.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.back-text {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.form {
+	width: 380px;
+	display: flex;
+	flex-flow: column;
+	gap: 28px;
+}
+
+form li {
+	display: flex;
+	flex-flow: column;
+	gap: 10px;
+}
+
+label {
+	text-transform: uppercase;
+	font: var(--label-font);
+}
+
+input {
+	height: 45px;
+	padding-inline: 16px;
+	border-radius: 8px;
+	font: var(--input-font);
+	outline: none;
+	border: 1px solid var(--dark-grayish-violet);
+	color: var(--dark-grayish-violet);
+}
+
+.error-message {
+	color: var(--red-input-errors);
+	font: var(--error-font);
+}
+
+.cvc-exp {
+	display: flex;
+	gap: 20px;
+}
+
+.cvc-exp > li {
+	width: calc(50% - 10px);
+}
+
+.exp {
+	display: flex;
+	gap: 10px;
+}
+
+.exp > li {
+	width: calc(50% - 5px);
+}
+
+.complete {
+	width: 380px;
+	display: none;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	gap: 48px;
+}
+
+.complete li {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+img[alt='Completed Tick'] {
+	width: 80px;
+	height: 80px;
+}
+
+h1 {
+	margin-top: -6px;
+	margin-bottom: -28px;
+	font: var(--h1-font);
+}
+
+.complete p {
+	font: var(--input-font);
+	text-transform: capitalize;
+}
+
+@media screen and (max-width: 1000px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--h1-font: 500 30px 'Space Grotesk';
+		--h2-font: 500 26px 'Space Grotesk';
+		--card-p-font: 500 14px 'Space Grotesk';
+		--label-font: 500 14px 'Space Grotesk';
+		--input-font: 500 18px 'Space Grotesk';
+		--error-font: 500 12px 'Space Grotesk';
+	}
+
+	/* | GENERAL STYLES */
+
+	body {
+		padding: 0;
+		/* text-transform: uppercase; */
+		gap: 50px;
+	}
+
+	.bgi {
+		width: 400px;
+	}
+
+	.card {
+		margin: 0;
+		align-items: center;
+		gap: 30px;
+	}
+
+	.card li {
+		width: 350px;
+		height: 190px;
+	}
+
+	.front {
+		margin: 0;
+		padding: 22px 25px;
+		background-size: cover;
+	}
+
+	.circles {
+		gap: 11px;
+	}
+
+	.circles p:first-child {
+		width: 38px;
+		height: 38px;
+	}
+
+	.circles p:last-child {
+		width: 17px;
+		height: 17px;
+	}
+
+	.front-text {
+		gap: 19px;
+	}
+
+	.back {
+		padding: 87px 48px;
+		background-image: url(img/bg-card-back.png);
+		background-size: cover;
+	}
+
+	form.form {
+		width: 300px;
+	}
+
+	.complete,
+	.complete li {
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	/* | UTILITY CLSSES */
+
+	.btn {
+		height: 3em;
+		border-radius: 0.4em;
+	}
+
+	.mobile {
+		display: block;
+	}
+
+	.desktop {
+		display: none;
+	}
+
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--h1-font: 500 3em 'Space Grotesk';
+		--h2-font: 500 2em 'Space Grotesk';
+		--card-p-font: 500 20px 'Space Grotesk';
+		--label-font: 500 1em 'Space Grotesk';
+		--input-font: 500 1.8em 'Space Grotesk';
+		--error-font: 500 1.2em 'Space Grotesk';
+	}
+
+	/* | GENERAL STYLES */
+	html {
+		height: auto;
+	}
+
+	body {
+		padding: 3.2em 1.6em 4.5em;
+		flex-flow: column;
+		gap: 14.4em;
+	}
+
+	.bgi,
+	.bgi li {
+		width: 100%;
+		height: 24em;
+	}
+
+	.card {
+		width: 100%;
+		margin: 0;
+		align-items: flex-end;
+		gap: 3.7em;
+	}
+
+	.card li {
+		width: 28.6em;
+		height: 15.6em;
+	}
+
+	.front {
+		margin: 0;
+		padding: 1.8em 2em;
+		position: absolute;
+		top: 12.5em;
+		left: 1.6em;
+	}
+
+	.circles {
+		gap: 0.8em;
+	}
+
+	.circles p:first-child {
+		width: 3.2em;
+		height: 3.2em;
+	}
+
+	.circles p:last-child {
+		width: 1.4em;
+		height: 1.4em;
+	}
+
+	.front-text {
+		gap: 2em;
+	}
+
+	.back {
+		padding: 7em 3em;
+	}
+
+	form.form {
+		width: 100%;
+		padding-inline: 0.8em;
+		gap: 2.4em;
+	}
+
+	form li {
+		gap: 1em;
+	}
+
+	input {
+		height: 2.5em;
+		padding-inline: 0.9em;
+		border-radius: 0.4em;
+	}
+
+	.cvc-exp {
+		gap: 1.2em;
+	}
+
+	.cvc-exp > li {
+		width: calc(50% - 0.6em);
+	}
+
+	.exp {
+		gap: 0.8em;
+	}
+
+	.exp > li {
+		width: calc(50% - 0.4em);
+	}
+
+	.complete,
+	.complete li {
+		width: 100%;
+		gap: 4.8em;
+	}
+
+	img[alt='Completed Tick'] {
+		width: 8em;
+		height: 8em;
+	}
+
+	h1 {
+		margin-top: -0.6em;
+		margin-bottom: -2.8em;
+	}
+}
+
+@media screen and (max-width: 610px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--card-p-font: 500 12px 'Space Grotesk';
+	}
+}
+
+@media screen and (max-width: 375px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--card-p-font: 500 10px 'Space Grotesk';
+	}
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}
